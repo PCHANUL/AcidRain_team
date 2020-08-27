@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
-import { StageListEntry } from '../components';
+import { StageListEntry, GuestLogin } from '../components';
 import { MakeStage } from '../components/index'
 import './css/SelectStage.css'
 import "98.css"
@@ -52,7 +52,6 @@ class SelectStage extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-      console.log('awefawefawef')
       //selectStage 경로로 이동하면 stage테이블에 저장된 데이터를 모두 가져오고 stageNames에 담김
       axios.get('http://localhost:5000/main/selectstage')
       .then(res => {
@@ -103,6 +102,11 @@ class SelectStage extends Component {
 
     refresh = async () => {
         await this.setState({a : this.state.a + 1});
+    }
+    // 비로그인 유저
+    guestLogin = async () => {
+      let randomName = Math.random().toString(36).substr(2, 5)
+      await this.props.changeGuest(`Guest_${randomName}`)
     }
 
     render() {
@@ -166,7 +170,10 @@ class SelectStage extends Component {
                         </div>
 
                         <div className="field-row SelectStage-row" style={{ justifyContent: 'center' }}>
-                            <button className="SelectStage-btn" onClick={() => this.getSelectedStageContents()}>
+                            <button className="SelectStage-btn" onClick={() => {
+                              if (userId === '') this.guestLogin()
+                              this.getSelectedStageContents()
+                            }}>
                               플레이
                             </button>
                             <button className="SelectStage-btn" onClick={() => {

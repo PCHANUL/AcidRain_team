@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     userId: '',
     //db에 저장된 제일 첫번째 스테이지를 보여줘서 첫리스트가 선택된 상태로 보여지도록
-    selectedStageName: 'JS연습편',
+    selectedStageName: 'test12',
     stageContents: '',
     color: "#EFEFC0",
     // gameStart Flag
@@ -136,7 +136,7 @@ resetStageContents = () => {
     const { userId, isGuest, selectedStageName, stageContents, gameStart,
       wantToMake, isLogin, themaPageIsOpen, color, gameLevel, socialLogin, modalOpened, update } = this.state
       let footerState =
-      !isLogin ? "로그인을 진행해주세요."
+      !isLogin && !isGuest ? "로그인을 진행해주세요."
       : (isLogin && !stageContents && !wantToMake) ? "스테이지를 고르고 엔터를 누르거나 'M'을 눌러 스테이지를 만들어보세요."
       : (stageContents && !gameStart) ? "게임을 시작하려면 ctrl+엔터를 누르고 스테이지를 다시 선택하려면 ESC를 누르세요."
       : wantToMake ? "뒤로 돌아가려면 ESC를 누르세요."
@@ -191,9 +191,9 @@ resetStageContents = () => {
         <Route
           path='/'
           render={() => {
-            if (!isLogin) {
-              return <Redirect to='/login' />
-            }
+            // if (!isLogin) {
+            //   return <Redirect to='/login' />
+            // }
             return <Redirect to='/selectstage' />
           }}
         />

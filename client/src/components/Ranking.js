@@ -23,7 +23,7 @@ class Ranking extends Component {
             this.props.history.push('/selectstage')
         }
         if(e.key==='Escape'){
-            this.props.history.goBack()
+          this.props.history.push('/selectstage')
         }
     }
 
@@ -44,13 +44,12 @@ class Ranking extends Component {
         //react-bootstrap-table을 이용하여 table을 구현, data를 지정하고 키 값을 지정하면 저절로 표를 구현할 수 있음
         const { isLogin } = this.props;
         return (
-
             <div className="window Ranking-window" id="RankingFocus" onKeyDown={this.onKeyPressed} tabindex="0">
                 <div className="title-bar">
                     <div className="title-bar-controls">
                         <div className="title-bar-text">Rank</div>
                         <button className="closeButton" aria-label="Close" onClick={() => {
-                            this.props.history.goBack()
+                            this.props.history.push('/selectstage')
                         }}></button>
                     </div>
                 </div>

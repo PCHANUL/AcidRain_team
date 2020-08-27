@@ -89,7 +89,12 @@ class UserLogin extends Component {
           return (
             <div className="window Login-window">
               <div className="title-bar">
-                <div className="title-bar-text">Login</div>
+                <div className="title-bar-controls">
+                  <div className="title-bar-text">Login</div>
+                  <button className="closeButton" aria-label="Close" onClick={() => {
+                      this.props.history.goBack()
+                  }}></button>
+                </div>
               </div>
               <div className="window-body">
                 <fieldset id="login">

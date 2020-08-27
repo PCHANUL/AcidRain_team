@@ -22,7 +22,7 @@ class Login extends Component {
                 </Switch>
 
                 <Route path='/selectstage' render={() => <SelectStage selectedStageName={selectedStageName} clickStage={clickStage}
-                   handleStageButton ={handleStageButton} getContents={getContents} stageContents={stageContents}
+                   handleStageButton ={handleStageButton} getContents={getContents} stageContents={stageContents} changeGuest={changeGuest}
                    wantToMake={wantToMake} handleMakingStage={handleMakingStage} userId={userId} update={update} updateStage={updateStage}
                    />} />
 

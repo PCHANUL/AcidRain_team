@@ -124,17 +124,14 @@ module.exports = {
 
     playstage: {
         post: async function (req, res){
-
-          if(req.body.userid){
-            let result = await stages.findAll({
-              attributes: ['contents'],
-              where: {
-                stagename: req.body.stagename
-              }
-            })
-            if(result.length !== 0){
-              res.status(200).send(result)
+          let result = await stages.findAll({
+            attributes: ['contents'],
+            where: {
+              stagename: req.body.stagename
             }
+          })
+          if(result.length !== 0){
+            res.status(200).send(result)
           }
           res.status(404).send({
             "message": "정보가 존재하지 않습니다"
