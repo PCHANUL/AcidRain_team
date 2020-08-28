@@ -46,7 +46,7 @@ class Nav extends Component {
                     {
                       gameStart
                       ? <div className="Link-ranking" onClick={gameStartEndToggle}>나가기</div>
-                      : userId
+                      : isLogin
                         ? socialLogin
                           ? <GoogleLogout
                               clientId="1037438704815-ih3s6v1brfb4p5oksifqvd881ss953kd.apps.googleusercontent.com"
@@ -57,7 +57,10 @@ class Nav extends Component {
                               buttonText="Logout"
                               onLogoutSuccess={this.navLogout}
                             ></GoogleLogout>
-                          : <Link to='/login' className="Link-login" onClick={logout}>로그아웃</Link>
+                          : <Link to='/login' className="Link-login" onClick={() => {
+                              this.props.history.push('/selectstage')
+                              logout()
+                            }}>로그아웃</Link>
                         : <Link to='/login' className="Link-login">로그인</Link>
 
                     }

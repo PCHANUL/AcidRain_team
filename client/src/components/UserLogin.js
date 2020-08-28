@@ -66,7 +66,7 @@ class UserLogin extends Component {
             this.props.changeUserId(result.data.nickname, false)
             cookie.save('sessionKey', result.data.session)
             this.setState({email: '', password: ''})
-
+            this.props.history.goBack();
           } catch(err) {
             console.log(err)
             alert('회원정보가 존재하지 않습니다 회원가입을 진행해주세요')
